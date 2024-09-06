@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 
 public class Vendor_Login extends JFrame implements ActionListener{
 	
-	JButton login,signup,clear;
+	JButton login,signup,clear,back;
 	JTextField userid;
 	JPasswordField pswd;
 	Vendor_Login(){
@@ -64,6 +64,10 @@ public class Vendor_Login extends JFrame implements ActionListener{
 		clear.addActionListener(this);
 		add(clear);
 		
+		back = new JButton("Back");
+		back.setBounds(380,370,100,40);
+		back.addActionListener(this);
+		add(back);
 		
 		getContentPane().setBackground(Color.WHITE);
 		}
@@ -90,14 +94,18 @@ public class Vendor_Login extends JFrame implements ActionListener{
 			}
 		}
 		else if(ae.getSource() == signup) {
-			
+			new vendor_signup();
+			setVisible(false);
 		}
 		
 		else if(ae.getSource() == clear) {
 			userid.setText("");
 			pswd.setText("");
 		}
-		
+		else if(ae.getSource() == back){
+			setVisible(false);
+			new Login();
+		}
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

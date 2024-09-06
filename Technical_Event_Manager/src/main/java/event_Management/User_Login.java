@@ -14,8 +14,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class User_Login extends JFrame implements ActionListener{
-	
-	JButton login,signup,clear;
+	String Userid;
+	JButton login,signup,clear,back;
 	JTextField userid;
 	JPasswordField pswd;
 	
@@ -66,6 +66,11 @@ public class User_Login extends JFrame implements ActionListener{
 	clear.addActionListener(this);
 	add(clear);
 	
+	back = new JButton("Back");
+	back.setBounds(380,370,100,40);
+	back.addActionListener(this);
+	add(back);
+	
 	
 	getContentPane().setBackground(Color.WHITE);
 	}
@@ -73,7 +78,7 @@ public class User_Login extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
 		if(ae.getSource() == login) {
-			String Userid = userid.getText();
+			Userid = userid.getText();
 			String Pswd = pswd.getText();
 			Conn conn = new Conn();
 			String query = "select * from usersignup where email = '"+Userid+"' and Pswd = '"+Pswd+"'";
@@ -81,7 +86,7 @@ public class User_Login extends JFrame implements ActionListener{
 				ResultSet rs = conn.s.executeQuery(query);
 				if(rs.next()) {
 					setVisible(false);
-					new user_page();
+					new user_page(Userid).setVisible(true);
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Wrong Credentials");
@@ -90,6 +95,7 @@ public class User_Login extends JFrame implements ActionListener{
 			catch(Exception e) {
 				System.out.println(e);
 			}
+			setVisible(false);
 		}
 		else if(ae.getSource() == signup) {
 			new user_signup();
@@ -99,6 +105,10 @@ public class User_Login extends JFrame implements ActionListener{
 		else if(ae.getSource() == clear) {
 			userid.setText("");
 			pswd.setText("");
+		}
+		else if(ae.getSource() == back){
+			setVisible(false);
+			new Login();
 		}
 		
 	}
