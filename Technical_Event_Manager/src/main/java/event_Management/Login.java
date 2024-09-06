@@ -45,14 +45,17 @@ public class Login extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
 		if(ae.getSource() == vendorJlabel) {
-			new Admin_Login();
+			new Vendor_Login();
+			setVisible(false);
 		}
 		else if(ae.getSource() == UserJlabel) {
 			new User_Login();
+			setVisible(false);
 		}
 		
 		else if(ae.getSource() == AdminJlabel){
-			new Vendor_Login();
+			new Admin_Login();
+			setVisible(false);
 		}
 		
 	}

@@ -4,10 +4,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -18,6 +20,7 @@ public class Vendor_Login extends JFrame implements ActionListener{
 	JPasswordField pswd;
 	Vendor_Login(){
 		setTitle("Vendor_Login");
+		setLayout(null);
 		setSize(800,480);
 		setVisible(true);
 		setLocation(350,200);
@@ -68,7 +71,23 @@ public class Vendor_Login extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
 		if(ae.getSource() == login) {
-			
+			String Userid = userid.getText();
+			String Pswd = pswd.getText();
+			Conn conn = new Conn();
+			String query = "select * from vendorsignup where email = '"+Userid+"' and Pswd = '"+Pswd+"'";
+			try {
+				ResultSet rs = conn.s.executeQuery(query);
+				if(rs.next()) {
+					setVisible(false);
+					new add_newitem();
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Wrong Credentials");
+				}
+			}
+			catch(Exception e) {
+				System.out.println(e);
+			}
 		}
 		else if(ae.getSource() == signup) {
 			

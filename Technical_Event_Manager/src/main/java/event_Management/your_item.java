@@ -62,6 +62,10 @@ public class your_item extends JFrame implements ActionListener{
 			else if(ae.getSource() == clear) {
 				texts.setText("");
 			}
+			else if(ae.getSource() == submit) {
+				setVisible(false);
+				new add_newitem();
+			}
 			else {
 				Conn c = new Conn();
 				String query = "insert into inventory values('"+ item +"')";
