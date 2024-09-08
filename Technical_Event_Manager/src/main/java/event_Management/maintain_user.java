@@ -19,15 +19,10 @@ public class maintain_user extends JFrame implements ActionListener {
 		setVisible(true);
 		setLocation(350,200);
 		
-		JLabel Jmembership = new JLabel("Membership");
+		JLabel Jmembership = new JLabel("User Update");
 		Jmembership.setFont(new Font("Osward",Font.BOLD,18));
 		add(Jmembership);
-		Jmembership.setBounds(180,100,200,40);
-		
-		JLabel Juser = new JLabel("User Management");
-		Juser.setFont(new Font("Osward",Font.BOLD,18));
-		add(Juser);
-		Juser.setBounds(180,300,200,40);
+		Jmembership.setBounds(180,100,250,40);
 		
 		home = new JButton("Home");
 		home.addActionListener(this);
@@ -43,16 +38,6 @@ public class maintain_user extends JFrame implements ActionListener {
 		add1.addActionListener(this);
 		add(add1);
 		add1.setBounds(400,100,200,40);
-		
-		add2 = new JButton("Add");
-		add2.addActionListener(this);
-		add(add2);
-		add2.setBounds(400,300,200,40);
-		
-		update1 = new JButton("Update");
-		update1.addActionListener(this);
-		add(update1);
-		update1.setBounds(400,340,200,40);
 		
 		update2 = new JButton("Update");
 		update2.addActionListener(this);
@@ -72,25 +57,17 @@ public class maintain_user extends JFrame implements ActionListener {
 			setVisible(false);
 			new Admin_Login();
 		}
-		
 		else if(ae.getSource() == add1){
 			setVisible(false);
 			new add_member();
 		}
-		else if(ae.getSource() == add2){
-			setVisible(false);
-			//new add_user();
-		}
-		else if(ae.getSource() == update1){
+		else if(ae.getSource() == update2){
 			setVisible(false);
 			new update_member();
 		}
-		else if(ae.getSource() == update2){
-			setVisible(false);
-			//new update_user();
-		}
 		
 	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new maintain_user();

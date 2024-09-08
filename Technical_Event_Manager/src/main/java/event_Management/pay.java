@@ -72,6 +72,7 @@ public class pay extends JFrame implements ActionListener {
 	Userid = who;
 	category = Category;
 	System.out.println(who);
+	System.out.println(Category);
 	}
 	@Override
 	public void actionPerformed(ActionEvent ae) {

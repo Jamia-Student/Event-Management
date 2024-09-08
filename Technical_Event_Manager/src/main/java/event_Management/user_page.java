@@ -31,7 +31,7 @@ public class user_page extends JFrame implements ActionListener{
 		JPanel panel = new JPanel();
         panel.setLayout(null);
         
-       // System.out.println(uname);
+        //System.out.println(uname);
 		JLabel text = new JLabel(""+uname);
 		text.setFont(new Font("Osward",Font.BOLD,10));
 		text.setBounds(25,5,300,40);
@@ -104,7 +104,8 @@ public class user_page extends JFrame implements ActionListener{
 		
 		getContentPane().setBackground(Color.WHITE);
 		who = uname;
-	}
+//		System.out.println(who);
+		}
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
@@ -115,7 +116,6 @@ public class user_page extends JFrame implements ActionListener{
 		else if(ae.getSource() == Jadd) {
 			setVisible(false);
 			new pay(who,Category);
-			setVisible(true);
 		}
 		else if(ae.getSource() == JLogout) {
 			setVisible(false);

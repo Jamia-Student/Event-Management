@@ -57,7 +57,7 @@ public class admin_page extends JFrame implements ActionListener {
 		public void actionPerformed(ActionEvent ae) {
 			if(ae.getSource() == maintainU) {
 				setVisible(false);
-				//new Admin_Login();
+				new maintain_user();
 			}
 			else if(ae.getSource() == logout) {
 				setVisible(false);
@@ -65,7 +65,7 @@ public class admin_page extends JFrame implements ActionListener {
 			}
 			else if(ae.getSource() == maintainV) {
 				setVisible(false);
-				//new Admin_Login();
+				new maintain_vendor();
 			}
 		}
 	public static void main(String[] args) {

@@ -9,11 +9,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class add_member extends JFrame implements ActionListener{
-	JTextField email,duration,name;
+public class add_vendor extends JFrame implements ActionListener {
+	JTextField email,category,name;
 	JButton add,back;
-	add_member(){
-		setTitle("Add Membership");
+	add_vendor(){
+		setTitle("Add Vendor");
 		setLayout(null);
 		setSize(800,480);
 		setVisible(true);
@@ -31,11 +31,11 @@ public class add_member extends JFrame implements ActionListener{
 		email.setHorizontalAlignment(email.CENTER);
 		add(email);
 		
-		duration = new JTextField();
-		duration.setBounds(500,200,300,40);
-		duration.setText("Enter Membership period in months");
-		duration.setHorizontalAlignment(email.CENTER);
-		add(duration);
+		category = new JTextField();
+		category.setBounds(500,200,300,40);
+		category.setText("Enter Vendor Category");
+		category.setHorizontalAlignment(email.CENTER);
+		add(category);
 		
 		add = new JButton("ADD");
 		add.setBounds(600,400,100,40);
@@ -53,7 +53,7 @@ public class add_member extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
 		String Email = email.getText();
-		String Duration = duration.getText();
+		String Category = category.getText();
 		String Name = name.getText();
 		
 		String Pswd = new random_string().generateRandomString();
@@ -62,21 +62,21 @@ public class add_member extends JFrame implements ActionListener{
 			if(email.equals("")) {
 				JOptionPane.showMessageDialog(null, "Enter the email id");
 			}
-			else if(duration.equals("")) {
-				JOptionPane.showMessageDialog(null, "Enter the duration");
+			else if(Category.equals("")) {
+				JOptionPane.showMessageDialog(null, "Enter the Category");
 			}
 			else {
 				Conn conn = new Conn();
 				try {
-					String query = "insert into membership values('"+Name+"','"+Email+"','"+Duration+"')";
-					String query1 = "insert into usersignup values('"+Name+"','"+Email+"','"+Pswd+"')";
+					String query = "insert into membership1 values('"+Name+"','"+Email+"','"+Category+"')";
+					String query1 = "insert into vendorsignup values('"+Name+"','"+Email+"','"+Pswd+"')";
 					
 					conn.s.execute(query);
 					conn.s.execute(query1);
 					
-					JOptionPane.showMessageDialog(null, "Membership added");
+					JOptionPane.showMessageDialog(null, "Vendor added");
 					setVisible(false);
-					new maintain_user();	
+					new maintain_vendor();	
 				}
 				catch(Exception e) {
 					System.out.println(e);
@@ -85,12 +85,12 @@ public class add_member extends JFrame implements ActionListener{
 		}
 		else if(ae.getSource() == back) {
 			setVisible(false);
-			new maintain_user();
+			new maintain_vendor();
 		}
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new add_member();
+		new add_vendor();
 	}
 
 }
